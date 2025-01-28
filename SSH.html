@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide And Shreik</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            color: #04d9FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #main-screen, #instructions-screen, #game-container {
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #00f;
+            padding: 20px;
+            background-color: #222;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #555;
+            color: #04d9FF;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        #game-output {
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #444;
+        }
+
+        #game-input, #morse-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            background-color: #555;
+            color: #04d9FF;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-screen">
+        <h1>Hear See Speak</h1>
+        <button id="start-game">Start Game</button>
+        <button id="how-to-play">How To Play</button>
+    </div>
+    
+    <div id="instructions-screen" class="hidden">
+        <button id="close-instructions" class="close-button">X</button>
+        <h2>How To Play</h2>
+        <p>Welcome to Hear See Speak in this game, you must navigate through your home and set traps to prevent an invasion. Use text commands to interact with the game. For example, words in (parenthesses) are your word choices for you to type.</p>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <div id="game-output"></div>
+        <input type="text" id="game-input" placeholder="Enter your command">
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainScreen = document.getElementById('main-screen');
+            const instructionsScreen = document.getElementById('instructions-screen');
+            const gameContainer = document.getElementById('game-container');
+            const gameOutput = document.getElementById('game-output');
+            const gameInput = document.getElementById('game-input');
+            const startGameButton = document.getElementById('start-game');
+            const howToPlayButton = document.getElementById('how-to-play');
+            const closeInstructionsButton = document.getElementById('close-instructions');
+
+            const gameState = {
+                currentRoom: 'intro',
+                inventory: []
+            };
+
+            const rooms = {
+                intro: {
+                    description: 'You are a young seventeen-year-old girl, and you are left home alone. You love to play video games with friends but also enjoy playing old-school text-based games alone. You sit down at your computer and receive a popup. POPUP( Hide and Shreik ) Do you want to click on the game?',
+                    actions: {
+                        yes: 'gamestart',
+                        no: 'gameplaying'
+                    }
+                },
+                gamestart: {
+                    description: 'You click on the popup and the game loads. The game is about a girl who is left alone and a murderer is on the loose. She must lock doors, close windows, and hide to protect herself from the murderer. Do you want to play the game?',
+                    actions: {
+                        yes: 'gameplaying',
+                        no: 'gameplaying'
+                    }
+                },
+                end: {
+                    description: 'Thank you for playing Hide and Shreik!',
+                    actions: {}
+                }
+            };
+
+            function displayMessage(message) {
+                const p = document.createElement('p');
+                p.innerHTML = message;
+                gameOutput.appendChild(p);
+                gameOutput.scrollTop = gameOutput.scrollHeight;
+            }
+
+            function processCommand(command) {
+                const currentRoom = rooms[gameState.currentRoom];
+
+                if (command in currentRoom.actions) {
+                    gameState.currentRoom = currentRoom.actions[command];
+                    displayMessage(rooms[gameState.currentRoom].description);
+                } else {
+                    displayMessage('Try restating your command.');
+                }
+            }
+
+            gameInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    const command = gameInput.value.trim().toLowerCase();
+                    gameInput.value = '';
+                    processCommand(command);
+                }
+            });
+
+            startGameButton.addEventListener('click', () => {
+                mainScreen.classList.add('hidden');
+                gameContainer.classList.remove('hidden');
+                gameState.currentRoom = 'intro';
+                displayMessage(rooms[gameState.currentRoom].description);
+            });
+
+            howToPlayButton.addEventListener('click', () => {
+                mainScreen.classList.add('hidden');
+                instructionsScreen.classList.remove('hidden');
+            });
+
+            closeInstructionsButton.addEventListener('click', () => {
+                instructionsScreen.classList.add('hidden');
+                mainScreen.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
