@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: 'coverGameArt.jpg';
+    background-size: cover;
+    color: #04d9FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#main-screen, #instructions-screen, #game-container {
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid #00f;
+    padding: 20px;
+    background-color: #222;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #555;
+    color: #04d9FF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #777;
+}
+
+#game-output {
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+}
+
+#game-input, #morse-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    background-color: #555;
+    color: #04d9FF;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #555;
+}
