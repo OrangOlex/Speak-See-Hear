@@ -1,8 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: "coverGameArt.jpg";
-    background-size: cover;
-    color: #04d9FF;
+    background-image: url("coverGameArt.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    color: #ff7d04;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +20,12 @@ body {
 #main-screen, #instructions-screen, #game-container {
     text-align: center;
     width: 80%;
+    max-height: 600px;
+    height: 20%;
     max-width: 600px;
-    border: 2px solid #00f;
     padding: 20px;
-    background-color: #222;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    position: absolute;
+    margin-bottom: 0%;
 }
 
 button {
@@ -29,7 +33,7 @@ button {
     padding: 10px 20px;
     border: none;
     background-color: #555;
-    color: #04d9FF;
+    color: #ff6804;
     font-size: 16px;
     cursor: pointer;
 }
@@ -39,7 +43,7 @@ button:hover {
 }
 
 #game-output {
-    height: 400px;
+    height: 70%;
     overflow-y: auto;
     margin-bottom: 20px;
     padding: 10px;
@@ -47,14 +51,14 @@ button:hover {
     border: 1px solid #444;
 }
 
-#game-input, #morse-input {
+#game-input{
     width: 100%;
     padding: 10px;
     border: 1px solid #444;
     background-color: #555;
-    color: #04d9FF;
+    color: #f78b10;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .close-button {
