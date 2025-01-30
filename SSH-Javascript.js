@@ -16,21 +16,64 @@
 
         const rooms = {
             intro: {
-                description: 'You are a young seventeen-year-old girl, and you are left home alone. You love to play video games with friends but also enjoy playing old-school text-based games alone. You sit down at your computer and receive a popup. POPUP( Hide and Shreik ) Do you want to click on the game?',
+                description: '1987 Saturday March 9th 7:30AM  (Press Enter to continue)',
                 actions: {
-                    yes: 'gamestart',
-                    no: 'gameplaying'
+                    '': 'Wakeup'
                 }
             },
-            gamestart: {
-                description: 'You click on the popup and the game loads. The game is about a girl who is left alone and a murderer is on the loose. She must lock doors, close windows, and hide to protect herself from the murderer. Do you want to play the game?',
+            Wakeup: {
+                description: 'You hear your alarm clock in the background, so you reach your hand over to turn it off. (Press Enter to continue)',
                 actions: {
-                    yes: 'gameplaying',
-                    no: 'gameplaying'
+                    '': 'TourRoom'
+                }
+            },
+            TourRoom: {
+                description: 'You sit up in your bed, eyes still filled with sleep. You look around at your room as your vision clears. (Press Enter to continue)',
+                actions: {
+                    '': 'RoomExplore'
+                }
+            },
+            RoomExplore: {
+                description: 'You can go into the bathroom, open up the closet or leave your room. ({Bathroom/yes}{Closet/no}{Leave/Press Enter to continue})',
+                actions: {
+                    yes: 'BathroomEncounter',
+                    no: 'ClosetEncounter',
+                    '': 'end'
+                }
+            },
+            BathroomEncounter: {
+                description: 'You open the door to the bathroom and take care of your buisness. (Press Enter to continue)',
+                actions: {
+                    '': 'RoomExplore'
+                }
+            },
+            ClosetEncounter: {
+                description: 'You open the closet and get dressed. (Press Enter to continue)',
+                actions: {
+                    '': 'FamilyPic'
+                }
+            },
+            FamilyPic: {
+                description: 'A picture is exposed as you grab a shirt from the hanger... Your Wife, daughter, son, and you. (Press Enter to continue)',
+                actions: {
+                    '': 'FlashBack'
+                }
+            },
+            FlashBack: {
+                description: 'You start to remember that awful night. The night of the car crash. (Press Enter to continue)',
+                actions: {
+                    '': 'ShowFamily'
+                }
+            },
+            //Show the newspaper story story of the car crash
+            ShowFamily: {
+                description: '(Press Enter to continue)',
+                actions: {
+                    '': 'RoomExplore'
                 }
             },
             end: {
-                description: 'Thank you for playing Hide and Shreik!',
+                description: 'Thank you for playing',
                 actions: {}
             }
         };

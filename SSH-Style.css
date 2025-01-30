@@ -25,7 +25,7 @@ body {
     max-width: 600px;
     padding: 20px;
     position: absolute;
-    margin-bottom: 0%;
+    margin-bottom: -70%;
 }
 
 button {
@@ -45,7 +45,7 @@ button:hover {
 #game-output {
     height: 70%;
     overflow-y: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 10px;
     background-color: #333;
     border: 1px solid #444;
