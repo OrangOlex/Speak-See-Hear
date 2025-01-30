@@ -5,7 +5,7 @@ const maze = [
     [1, 1, 1, 1, 1, 0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1, 1, 1, 1, 1, 0],
     [1, 0, 1, 1, 1, 0, 0, 0, 0, 0],
-    [1, 1, 1, 0, 1, 1, 1, 1, 0,],
+    [0, 1, 1, 0, 1, 1, 1, 1, 1, 0],
     [1, 0, 1, 0, 1, 0, 0, 1, 1, 1],
     [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
     [1, 1, 1, 0, 1, 1, 1, 0, 1, 1]
@@ -61,6 +61,7 @@ function movePlayer(event) {
 
     if (newRow === maze.length - 1 && newCol === maze[newRow].length - 1) {
         alert('You won!');
+        mazeElement.style.display = 'none';  // Hide the maze
         window.removeEventListener('keydown', movePlayer);
     }
 }
