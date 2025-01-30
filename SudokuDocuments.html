@@ -118,7 +118,11 @@
                     row.forEach((cell, columnIndex) => {
                         const cellElement = document.createElement('input');
                         cellElement.classList.add('cell');
-                        cellElement.classList.add((rowIndex + columnIndex) % 2 === 0 ? 'lightBackground' : 'darkBackground');
+                        if (Math.floor(rowIndex / 3) % 2 === 0) {
+                            cellElement.classList.add(Math.floor(columnIndex / 3) % 2 === 0 ? 'lightBackground' : 'darkBackground');
+                        } else {
+                            cellElement.classList.add(Math.floor(columnIndex / 3) % 2 === 0 ? 'darkBackground' : 'lightBackground');
+                        }
                         cellElement.type = 'text';
                         cellElement.maxLength = 1;
                         cellElement.value = cell !== 0 ? cell : '';
