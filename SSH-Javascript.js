@@ -38,7 +38,7 @@
                 actions: {
                     yes: 'BathroomEncounter',
                     no: 'ClosetEncounter',
-                    '': 'end'
+                    '': 'LeaveRoom'
                 }
             },
             BathroomEncounter: {
@@ -70,6 +70,37 @@
                 description: '(Press Enter to continue)',
                 actions: {
                     '': 'RoomExplore'
+                }
+            },
+            LeaveRoom: {
+                description: 'You walk out into the hallway and walk over to your daughters door. (Press Enter to continue)',
+                actions: {
+                    '': 'WakeDaughter'
+                }
+            },
+            WakeDaughter: {
+                description: 'You open up your daughters door and call out her name. (Press Enter to continue)',
+                actions: {
+                    '': 'DaughterTalk'
+                }
+            },
+            DaughterTalk: {
+                description: 'Maria: Hello Daddy, can you please make breakfast? (yes/no)',
+                actions: {
+                    yes: 'CookBreakfastLine',
+                    no : 'NoBreakfastLine'
+                }
+            },
+            CookBreakfastLine: {
+                description: 'You: Sure! Ill see what I can whip up. (Press Enter to continue)',
+                actions: {
+                    '': 'CookingGame'
+                }
+            },
+            NoBreakfastLine: {
+                description: 'You: Sorry, not today my dear. Get ready for school. (Press Enter to continue)',
+                actions: {
+                    '': 'end'
                 }
             },
             end: {
